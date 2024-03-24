@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class JobApplied extends Model
 {
     use HasFactory;
+    protected $fillabla =[
+        'jobDetail_id',
+        'jobSeeker_id',
+    ]
 }

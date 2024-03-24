@@ -11,6 +11,11 @@ class JobCategory extends Model
 {
     use HasFactory,HasSlug;
 
+    protected $fillabla = [
+        'category',
+        'slug'
+    ]
+
 
     
     public function getSlugOptions() : SlugOptions
