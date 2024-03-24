@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class JobSeeker extends Model
 {
     use HasFactory;
+
+    protected $fillabla = [
+        'cv',
+        'user_id',
+    ]
 }
