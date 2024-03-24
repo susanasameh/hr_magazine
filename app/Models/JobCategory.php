@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
 class JobCategory extends Model
 {
     use HasFactory,HasSlug;
+    
+    protected $table = 'JobCategory';
 
     protected $fillabla = [
         'category',
@@ -24,4 +29,11 @@ class JobCategory extends Model
             ->generateSlugsFrom('category')
             ->saveSlugsTo('slug');
     }
+
+    public function JobDetail()
+    {
+    return $this->hasMany(JobDetail::class);
+    }
+
+
 }

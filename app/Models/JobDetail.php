@@ -4,12 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class JobDetail extends Model
 {
     use HasFactory;
 
-    protected $fillabla = [
+    
+    protected $table = 'JobDetail';
+
+    protected $fillable = [
         'title',
         'slug',
         'company',
@@ -21,4 +26,9 @@ class JobDetail extends Model
         'category_id',
         'employer_id',
     ]
+
+    public function JobCategory(): BelongsTo
+    {
+        return $this->belongsTo(JobCategory::class);
+    }
 }

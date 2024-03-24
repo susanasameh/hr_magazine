@@ -9,7 +9,10 @@ class JobSeeker extends Model
 {
     use HasFactory;
 
-    protected $fillabla = [
+    
+    protected $table = 'JobSeeker';
+    
+    protected $fillable = [
         'cv',
         'user_id',
     ]
