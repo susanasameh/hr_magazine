@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleCommentRequest extends FormRequest
+class StoreAuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class ArticleCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image'=>'required|image|mimes:jpeg,png,jpg',
+            'description'=>'required|string|max:1000',
             'user_id' => 'required|exists:users,id', // Ensures user exists
-            'content' => 'required|string',
-            'parentComment' => 'nullable|exists:article_comments,id', // Allow null for root comments
-            'article_id' => 'required|exists:articles,id', // References articles table (corrected)
         ];
     }
 }

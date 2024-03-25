@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password')->nullable();           
             $table->rememberToken()->nullable();
             $table->string('mobile')->nullable();
-            $table->string('position');
+            $table->string('position')->default('user');
             $table->boolean('active')->default(1);
             $table->morphs('userable');
             $table->timestamps();
