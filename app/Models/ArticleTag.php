@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobApplied extends Model
+class ArticleTag extends Model
 {
     use HasFactory;
 
-    protected $fillable=["jobDetail_id","jobSeeker_id"];
+    protected $fillable = [
+        'article_id',
+        'tag_id'
+    ];
 }

@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobApplied extends Model
+class UserMedia extends Model
 {
     use HasFactory;
-
-    protected $fillable=["jobDetail_id","jobSeeker_id"];
+    protected $fillable=["social_id","user_id","value"];
 }

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employers', function (Blueprint $table) {
+        Schema::create('article_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('companyName');
-            $table->string('address');
-            $table->string('logo')->nullable();
-            $table->string('phone')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('articleCategoryName')->unique();
+            $table->string('slug');
+            $table->boolean('hasComments');
+            $table->boolean('hasSource');
+            $table->boolean('hasYoutubeLink');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employers');
+        Schema::dropIfExists('article_categories');
     }
 };

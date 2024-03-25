@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employers', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('companyName');
-            $table->string('address');
-            $table->string('logo')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('title')->index();
+            $table->string('slug');
+            $table->string('image');
+            $table->text('content');
+            $table->foreignId('category_id')->references('id')->on('article_categories')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('approved')->default(1);
+            // $table->morphs('articleable');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employers');
+        Schema::dropIfExists('articles');
     }
 };

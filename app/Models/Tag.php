@@ -6,24 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use App\Models\Article;
 
-class JobCategory extends Model
+class Tag extends Model
 {
     use HasFactory,HasSlug;
 
-    protected $fillable=["category","slug"];
-    
+    protected $fillable=[
+        'tagName',
+        'slug',
+    ];
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('category')
+            ->generateSlugsFrom('tagName')
             ->saveSlugsTo('slug');
     }
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
-
-
+    public function articleTag()    // i used articles word in morph relation
+    {
+        return $this->belongsToMany(Article::class);
+    }
 }

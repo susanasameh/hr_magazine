@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employers', function (Blueprint $table) {
+        Schema::create('user_media', function (Blueprint $table) {
             $table->id();
-            $table->string('companyName');
-            $table->string('address');
-            $table->string('logo')->nullable();
-            $table->string('phone')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained("users")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('social_id')->constrained("social_media")->onDelete('cascade')->onUpdate('cascade');
+            $table->string("value");
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employers');
+        Schema::dropIfExists('user_media');
     }
 };

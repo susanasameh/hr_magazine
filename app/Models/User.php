@@ -20,9 +20,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        
         'name',
         'email',
         'password',
+        "position",
+        "slug",
+        "mobile",
+        "userable_type",
+        "userable_id",
+        "active",
     ];
 
     /**
@@ -53,5 +60,22 @@ class User extends Authenticatable
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function articleComment(){
+        return $this->hasMany(articleComment::class);
+    }
+
+    public function article(){
+        return $this->hasMany(Article::class);
+    }
+
+    function userable(){
+        return $this->morphTo();
+    }
+
+    public function socialMedia()
+    {
+        return $this->belongsToMany(SocialMedia::class);
     }
 }
